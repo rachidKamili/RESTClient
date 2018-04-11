@@ -33,6 +33,8 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Repository car = mRepositories.get(position);
         holder.tvName.setText(car.getName());
+        holder.tvLanguage.setText(car.getLanguage());
+        holder.tvCreatedAt.setText(car.getCreatedAt());
     }
 
     @Override
@@ -42,9 +44,13 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
+        TextView tvLanguage;
+        TextView tvCreatedAt;
         public ViewHolder(View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
+            tvLanguage = itemView.findViewById(R.id.tvLanguage);
+            tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
         }
     }
 }
