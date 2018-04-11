@@ -45,9 +45,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setDataToViews() {
-        nameProfile.setText(gitHubProfile.getName() != null ? gitHubProfile.getName() : gitHubProfile.getLogin());
-        repoNumber.setText(String.valueOf(gitHubProfile.getPublicRepos()));
-        createdAt.setText(gitHubProfile.getCreatedAt());
+        nameProfile.setText("Name : " + (gitHubProfile.getName() != null ? gitHubProfile.getName() : gitHubProfile.getLogin()));
+        repoNumber.setText("Number of repositories: "+String.valueOf(gitHubProfile.getPublicRepos()));
+        createdAt.setText("Created at: " + gitHubProfile.getCreatedAt());
         Glide.with(this).load(gitHubProfile.getAvatarUrl()).into(imageProfile);
     }
 
