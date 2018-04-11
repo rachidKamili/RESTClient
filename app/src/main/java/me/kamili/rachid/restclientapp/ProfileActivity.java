@@ -1,5 +1,6 @@
 package me.kamili.rachid.restclientapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void showRepositories(View view) {
-        // TODO: 4/10/2018 starting repositories activity
+        Intent intent = new Intent(this, RepositoryActivity.class);
+        intent.putExtra(Constants.GITHUB_ROPOS_URL, gitHubProfile.getReposUrl());
+        startActivity(intent);
     }
 }
