@@ -1,5 +1,6 @@
 package me.kamili.rachid.restclientapp;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -38,12 +39,16 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     @Override
     public boolean handleMessage(Message msg) {
 
-        Gson gson = new Gson();
-        GitHubProfile gitHubProfile = gson.fromJson(MessageUtils.getMessage(msg), GitHubProfile.class);
+        String results = MessageUtils.getMessage(msg);
+        GitHubProfile gitHubProfile = new Gson().fromJson(results, GitHubProfile.class);
 
         //Checking if the username is correct
         if (gitHubProfile.getHtmlUrl() != null){
-            // TODO: 4/10/2018 Starting the ProfileActivity
+
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra(Constants.PROFILE_JSON, results);
+            startActivity(intent);
+
         }else {
             Toast.makeText(this, "Username is not correct!",Toast.LENGTH_LONG).show();
             etUsername.setText("");
